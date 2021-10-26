@@ -1,0 +1,296 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block stylesheets %}
+
+{{ parent()}}
+
+<link rel="stylesheet" href="{{asset('css/admin/home1.css') }}">
+
+<style id="savepage-cssvariables">
+    body {
+        background-image: url({{ asset('images/back2.png') }} ) !important;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+     }
+     .login-back-left {
+         background:#ffffff00 !important;
+     }
+
+
+</style>
+
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="top-bar shadow">
+    <div class="container">
+        <div class="flex-container">
+            <div><img src="{{asset('images/profile.png')}}"></div>
+            <div class="user">Admin</div>
+            <div><img src="{{asset('images/settings.png')}}"></div>
+        </div>
+    </div>
+</div>
+{# -------------------------------------- top-bar -------------------------------------------------------- #}
+
+<div class="container mt-5 mb-5">
+     
+    <div class="row mb-5">
+        
+       <div class="col-lg-2 col-md-4 col-sm-12">
+                 
+            <select class="js-example-basic-single" name="Etablissement" id="Etablissement">
+                <option value="choix">Choix Etablissement...</option> 
+                <option value="choix">Choix Etablissement Choix Etablissemen Choix Etablissement...</option> 
+                <option value="choix">Choix Etablissement...</option> 
+                <option value="choix">Choix Etablissement...</option> 
+            </select>
+
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-12"  >
+
+            <select class="js-example-basic-single" name="Formation" id="Formation" >
+                {# <option value="AL">Choix formation...</option> #}
+            </select>
+
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-12">
+
+            <select class="js-example-basic-single" name="Promotion" id="Promotion" >
+                {#  <option value="AL">Choix Promotion...</option> #}
+            </select>
+        
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-12">
+
+            <select class="js-example-basic-single" name="Semestre" id="Semestre">
+                {# <option value="AL">Choix Semester...</option> #}
+            </select>
+
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-12">
+
+            <select class="js-example-basic-single" name="Module" id="Module">
+                {# <option value="AL">Choix Module...</option> #}
+            </select>
+
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-12">
+
+            <select class="js-example-basic-single" name="Element" id="Element">
+                {#  <option value="AL">Choix Eelement...</option> #}
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+{# ----------------------------------------------- select2 -------------------------------------------------------- #}
+
+
+      <div class="container mt-5">
+
+      <div class="card shadow">
+            <div class="card-header ">
+               <span class="mt-5"><i class="fas fa-list"></i> LISTE DES VIDEOS</span>
+               <button type="button" class="btn btn-primary  btn-sm float-right btn-fcz"><i class="fas fa-plus"></i> Ajouter</button>
+            </div>
+            <div class="card-body">
+                    <table id="table-data" class="table table-striped table-bordered" style="width:100% ">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titre</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2011/04/25</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-print"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2011/07/25</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2009/01/12</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2012/03/29</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2008/11/28</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2012/12/02</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2012/08/06</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2010/10/14</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2009/09/15</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2008/12/13</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression</td>
+                                <td>2008/12/19</td>
+                                <td class="text-center">
+                                    <i class="fas fa-eye   "></i>
+                                    <i class="fas fa-edit  "></i>
+                                    <i class="fas fa-trash "></i>
+                                    <i class="fas fa-print "></i>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+            </div>
+       </div>
+
+        
+      </div>
+    
+    {# --------------------------------------------------- Modal -------------------------------------------------------- #}
+      
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal titre</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText1">Nom</label>
+                            <input type="text" class="form-control" id="exampleInputText1" placeholder="Text">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Titre</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary btn-fcz">Enregistrer</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Fermer</button>
+
+            </div>
+            </div>
+        </div>
+    </div>
+    {# --------------------------------------------------- Modal -------------------------------------------------------- #}
+
+
+
+
+
+{% endblock %}
+

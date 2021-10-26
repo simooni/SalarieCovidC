@@ -1,0 +1,66 @@
+
+  body{
+    /* background-color: #D2D6DE; */
+    background-color:#fcfbfb;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  
+  /* .table_home th,
+  .table_home  td {
+    padding: 0.18rem ;
+    vertical-align: top;
+    width: 8% ;
+    text-align: center ;
+    font-size: 12px;
+  }
+  .table_home{
+    width:53rem;
+  }
+  .bg-light {
+    background-color: #c5d6f3  !important;
+  }  */
+
+/* _________________________________________ */
+  .contenu-index{
+      /* margin-top: 30px;
+      margin-left: 100px;
+      margin-right: 100px; */
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 1129px;
+    padding: 25px;
+  }
+.card_etudiant{
+    width: 80px;
+    /* border:1px solid #004085;  */
+
+ }
+ .table{
+    font-size: 12px;
+ }
+ .table th, .table td {
+    padding: 0.5rem !important;
+ }
+ a.text-success.text-deconnecter {
+  color: #112f3e !important;
+}
+
+ .alert-bienvenu {
+  color: #112f3e !important;
+  /* background-color: #8c92b3b5; */
+  background-image: linear-gradient(#97dfec40, #16797069);
+}
+.btn-exporter{
+  margin-left: 83%;
+  margin-bottom: 2%;
+  width: 17%;
+}
+
+
+
+
+
+
+
+   

@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Authentification {% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent()}}
+
+    <link rel="stylesheet" href="{{asset('css/login.css') }}">
+
+    <style id="savepage-cssvariables">
+        body {
+    background-image: url({{ asset('images/bg_univer.jpeg') }} ) !important;
+    /*  background-repeat:no-repeat;
+        background-size: cover;*/
+        
+        background-position: center center;
+    
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    
+    /* Background image is fixed in the viewport so that it doesn't move when 
+        the content's height is greater than the image's height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based
+        on the container's size */
+    background-size: cover;
+    
+    /* Set a background color that will be displayed
+        while the background image is loading */
+    background-color: #464646;
+        }
+        .login-back-left {
+            background:#ffffff00 !important;
+        }
+    </style>
+
+
+
+{% endblock %}
+
+{% block body %}
+    <body class="light-login">
+        <div>
+        <div class="col-md-4 login-back-right">
+            <section class="body-sign">
+                <a class="logo pull-left" style="position:absolute;top:25px;">
+                    <img data-savepage-src="/logo/logo.png" src="{{ asset('images/logoW.png') }}" height="55" alt="Porto Admin">
+                </a>
+                <div class="center-sign">
+
+                    <div class="panel panel-sign">
+                        <div class="panel-title-sign mt-xl text-right">
+                            <h2 class="title text-uppercase text-bold m-none"><i class="fas  fa-user mr-xs"></i>AUTHENTIFICATION</h2>
+                        </div>
+                        <div class="panel-body">
+                            
+                            <div class="alert alert-success " style="display:none;text-align:center;" role="alert" ></div>
+                            <div class="alert alert-danger " style="display:none;text-align:center;" role="alert" ></div>
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+                        
+                            <form method="post" >
+                                <div class="form-group mb-lg">
+                                    <label for="username">Nom d'utilisateur</label>
+                                    <div class="input-group input-group-icon">
+                                        <input type="text"  value="{{ last_username }}" name="username" id="inputUsername" class="form-control input-lg" placeholder="Nom d'utilisateur" required="" autofocus="">
+                                        <span class="input-group-addon"> 
+                                            <span class="icon icon-lg">
+                                                <i class="fas  fa-user"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-lg">
+                                    <label for="username">Mot de passe</label>
+                                    <div class="input-group input-group-icon">
+                                        <input type="password" name="password" id="inputPassword" class="form-control input-lg" placeholder="Mot de passe" >
+                                        <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+                                        <span class="input-group-addon">
+                                            <span class="icon icon-lg">
+                                                <i class="fas  fa-lock"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6 text-right btn-connexion">
+                                        <input class="btn btn-default btn-sm btn-my btn-block" type="submit" id="login" name="login" value="Connexion">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p class="text-center text-muted mt-md mb-md">© COPYRIGHT 2020. TOUS DROITS RESERVES, MTSI FCZ.</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-8 login-back-left">
+                <section class="body-sign">
+                <div class="center-sign" style="text-align:center;">
+                    {# <img  height="200" src="{{ asset('images/logofcz.png') }}">   #}
+                </div>
+            </section>
+        </div>
+        </div>
+    </body>    
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+{% endblock %}
+

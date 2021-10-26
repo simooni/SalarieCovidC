@@ -1,0 +1,65 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+ 
+ .top-bar{
+     background-color: white;
+ }
+
+ .flex-container {
+    display: flex;
+    justify-content: space-between;
+ 
+ }
+
+.flex-container > div {
+    text-align: center;
+    margin: 10px;
+}
+.flex-container > div > img{
+    height : 34px;
+}
+.user{
+       margin-top: 17px !important;
+       font-weight: bold;
+       color: black;
+       font-size: 14px;
+}
+.fas{
+    font-size:12.5px;
+}
+td{
+    font-size: 13px;
+}
+/* --------------------------------------- select --------------------------------------------------- */
+.js-example-basic-single{
+    width: 100%;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    background-color: #34495E;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    color: white;
+
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: white transparent transparent transparent;
+}
+
+.select2-container--default .select2-selection--single{
+    background-color:  #2C3E50;
+    font-size: 13px;
+    color: white;
+    border: 0px;
+    border-radius: 2px;
+}
+
+span.select2-selection.select2-selection--single, .select2-container--default .select2-search--dropdown .select2-search__field  {
+        outline: none;
+}
+.card {
+    font-size:14px;
+    border-radius: 3px;
+}
+
+

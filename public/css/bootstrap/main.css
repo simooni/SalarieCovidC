@@ -1,0 +1,65 @@
+/* body{
+    font-family: 'Poppins', sans-serif;
+
+} */
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+ 
+ .top-bar{
+     background-color: white;
+ }
+
+ .flex-container {
+    display: flex;
+    justify-content: space-between;
+ 
+ }
+
+.flex-container > div {
+    text-align: center;
+    margin: 0px;
+}
+.flex-container > div > img{
+    height : 34px;
+}
+.user{
+       margin-top: 17px !important;
+       font-weight: bold;
+       color: black;
+       font-size: 14px;
+}
+
+/* ------------------------------- top bar --------------------------------------------------- */
+
+label{
+    font-size: 14px;;
+}
+h5{
+    font-size:15px;
+}
+
+.modal-dialog {
+    max-width: 420px;
+    margin: 1.75rem auto;
+}
+.form-control{
+    height:36px;
+}
+.form-group {
+    margin-bottom: 0.7rem;
+}
+::placeholder {
+    color: peachpuff;
+    font-size: 12px;
+  }
+  .btn-fcz {
+    background-color: #137f8c !important;
+    color: white;
+}
+
+.btn{
+    min-width: 105px;
+    font-size: 13px;;
+}

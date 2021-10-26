@@ -1,0 +1,37 @@
+{%set url = '/uploads/'%}
+<input class="countSanitaire"  type="hidden" value=" {{TdocumentSanitaire |length }} ">
+
+{% if TdocumentSanitaire |length > 0 %}
+
+    <table id="table"  class="table_home table-bordered  table_doc_sanit "  >
+        <thead class="bg-light" >
+            <tr class="tr_table">
+                <th > Num </th> 
+                <th > File </th> 
+                <th > Supprimer </th>
+            </tr> 
+        </thead>
+        <tbody class="TbodyDocument">
+            {% for Tds in TdocumentSanitaire %}
+                <tr>
+                    <td class="">{{Tds.id}}</td>
+                    <td class="">
+                        <a href={{ url ~ Tds.file | url_encode   }} download="{{ Tds.file  | split('+', 2)[1] }}"> 
+                            <button type="button" class="dropdown-item Telecharger"> {{ Tds.file  | split('+', 2)[1] }}</button>
+                        </a>
+                    </td>
+                    <td classe="td_width"> 
+                        <form  name="Tdoc-supprime" class="Tdoc-supprime" method="post" action="{{ path('document_supprimer', {'id': Tds.id }) }}" >
+                            <input type="hidden" name="_token" value="{{ csrf_token('supprimer_'~ Tds.id) }}">
+                            <button type="submit" class="supprimer_file" name="sup" style="border:none; background-color:transparent; outline:none;">
+                            <input class="type-doc"  type="hidden" value="sanitaire">
+                                <i class="fa fa-trash-o" style="color:red;font-size:14px"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>   
+    
+{% endif %} 

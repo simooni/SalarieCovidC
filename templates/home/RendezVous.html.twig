@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+   {{parent()}}
+    <link rel="stylesheet" href="{{  asset('css/home.css') }}" rel="stylesheet">  
+    
+{% endblock %}
+
+{%set url = '/uploads/'%}
+
+{% block body %}
+    <div class="container card-cent">
+        <div class="alert alert-success mt-3 text-center shadow alert-bienvenu" role="alert">
+            <div class="row row-entity ml-1">
+                <div class="col-sm-4 text-left col-user">
+                    <i class="fas fa-user mr-1"></i> Bienvenu <strong>{{app.user.user}}</strong>
+                </div>
+                <div class="col-sm-4 col-icon-user">
+                        <i class=""></i> 
+                </div>
+                <div class="col-sm-4 text-right col-user">
+                    <a href="{{ path('app_logout') }}" class="text-success text-deconnecter"> 
+                        <i class="fas fa-arrow-alt-circle-left mr-1 "></i> Se déconnecter
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>    
+    
+    <div class="contenu-index contenu_color" >
+        <div class="card-header card_etudiant" style="text-align: center">
+            Salarié
+        </div>
+        <div class="alert alert-primary text-center card-border " role="alert">
+            <div class="info_etud">
+            
+                <div class="row row_etud">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label_left"> Nom :</label>  <label class="label_right"> {{etudiant.nom}} </label>  
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label_left"> Prénom :</label> <label class="label_right"> {{etudiant.prenom}} </label>
+                                                                    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label_left"> Lieu De Naissance :</label>  <label class="label_right"> {{etudiant.lieuNaissance}}</label>  
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label_left"> Date De Naissance :</label> <label class="label_right"> {{etudiant.dateNaissance |date("m/d/Y") }} </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label_left"> CIN :</label>  <label class="label_right"> {{etudiant.cin}}</label>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon_etud">
+                <i class="fas fa-user graduate message-graduate"></i>
+            </div> 
+        </div>
+
+        {# ***************************************************************************************************** #}
+        {# ******************************************* Pass Sanitaire ****************************************** #}
+        <div class="card-header div_plus mt-2 ">
+            <i class="fa fa-plus  navigation-icon mr-2 ml-2  active-color nvc" id="N1_1" ></i> Pass Sanitaire
+        </div>
+
+        <div class="myDiv">
+             
+            <div class="demo_sanit">
+               
+                {% if TdocumentSanitaire |length > 0 %}
+
+                    <table id="table"  class="table_home table-bordered  table_doc_sanit mt-2"  >
+                        <thead class="bg-light" >
+                            <tr class="tr_table">
+                                <th > Num </th> 
+                                <th > File </th> 
+                            </tr> 
+                        </thead>
+                        <tbody class="TbodyDocument">
+                            {% for Tds in TdocumentSanitaire %}
+                                <tr>
+                                    <td class="">{{Tds.id}}</td>
+                                    <td class="">
+                                        <a href={{ url ~ Tds.file | url_encode   }} download="{{ Tds.file  | split('+', 2)[1] }}"> 
+                                            <button type="button" class="dropdown-item Telecharger"> {{ Tds.file  | split('+', 2)[1] }}</button>
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>   
+                    
+                {% endif %} 
+                     
+            </div>    
+        </div>
+
+        {# *********************************************************************************************************** #}
+        {# ***************************************** Certificat Positif COVID **************************************** #}
+        <div class="card-header div_plus mt-2 div_plus_2">
+            <i class="fa fa-plus  navigation-icon mr-2 ml-2  active-color nvc" id="N1_1"></i> Certificat Positif COVID
+        </div>
+
+        <div class="myDiv"> 
+
+            <div class="Certificat_Positif_COVID myDivCvid">
+                
+                {% if TdocumentCovid |length > 0 %}
+                    <table id="table"  class="table_home table-bordered   table_doc_covid ">
+                        <thead class="bg-light" >
+                            <tr class="tr_table">
+                                <th > Num </th> 
+                                <th > File </th> 
+                            </tr> 
+                        </thead>
+                        <tbody class="TbodyDocumentCovid">
+                            {% for Tdc in TdocumentCovid %}
+                                <tr>
+                                    <td class="">{{Tdc.id}}</td>
+                                    <td class="">
+                                        <a href={{ url ~ Tdc.file | url_encode   }} download="{{ Tdc.file  | split('+', 2)[1] }}"> 
+                                            <button type="button" class="dropdown-item Telecharger"> {{ Tdc.file  | split('+', 2)[1] }}</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}  
+                
+            </div>    
+        </div>
+
+        
+        <div class="card-header div_plus mt-2 div_plus_3">
+            <i class="fa fa-plus  navigation-icon mr-2 ml-2  active-color nvc" id="N1_1"></i> Déclaration Présence Symptômes
+        </div>
+
+        <div class="myDiv myDivMessageRV">
+            
+            {{ include ('tableBody/RendezVousMessage.html.twig') }} 
+        
+        </div>
+
+    </div>
+    <div class="modal-backdrop fade show" id="show_loader" hidden> <div class="loader1"></div> </div>
+ 
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}} 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+{% endblock %}
+

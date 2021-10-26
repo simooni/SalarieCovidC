@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+   {{parent()}}
+    <link rel="stylesheet" href="{{  asset('css/home.css') }}" rel="stylesheet">
+    
+
+        
+    
+{% endblock %}
+
+{% block body %}
+    <div class="container card-cent">
+        <div class="alert alert-success mt-3 text-center shadow alert-bienvenu" role="alert">
+            <div class="row row-entity  ml-1">
+                <div class="col-sm-4 text-left col-user">
+                    <i class="fas fa-user"></i> Bienvenu <strong>{{app.user.user}}</strong>
+                </div>
+                <div class="col-sm-4 col-icon-user">
+                        <i class=""></i> 
+                </div>
+                <div class="col-sm-4 text-right col-user ">
+                    <a href="{{ path('app_logout') }}" class="text-success text-deconnecter"> 
+                        <i class="fas fa-arrow-alt-circle-left mr-1  "></i> Se déconnecter
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>   
+    
+    <div class="contenu-index contenu_color" >
+        <div class="card-header card_etudiant" style="text-align: center">
+            Salarié
+        </div>
+        <div class="alert alert-primary text-center card-border " role="alert">
+            <div class="info_etud">
+            
+                <div class="row row_etud">
+                    <div class="col-md-6 col-etud">
+                        <div class="form-group">
+                            <label class="label_left"> Nom :</label>  <label class="label_right"> {{app.user.nom}} </label>  
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-etud">
+                        <div class="form-group">
+                            <label class="label_left"> Prénom :</label> <label class="label_right"> {{app.user.prenom}} </label>
+                                                                    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-etud">
+                        <div class="form-group">
+                            <label class="label_left"> Lieu De Naissance :</label>  <label class="label_right"> {{app.user.lieuNaissance}}</label>  
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-etud">
+                        <div class="form-group">
+                            <label class="label_left"> Date De Naissance :</label> <label class="label_right"> {{app.user.dateNaissance |date("m/d/Y") }} </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-etud">
+                        <div class="form-group">
+                            <label class="label_left"> CIN :</label>  <label class="label_right"> {{app.user.cin}}</label>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon_etud">
+                <i class="fas fa-user graduate message-graduate"></i>
+            </div> 
+        </div>
+
+        {# ***************************************************************************************************** #}
+        {# ******************************************* Pass Sanitaire ****************************************** #}
+        {# style="background-color: #8e8eb7 !important;" #}
+        <div class="card-header div_plus mt-2 div_plus_1">
+            <i class="fa fa-plus  navigation-icon mr-2 ml-2  active-color nvc" id="N1_1" ></i> Pass Sanitaire
+        </div>
+
+        <div class="myDiv">
+            <div class="pass_sanitaire" >
+                <div>- Pass Sanitaire</div>
+                <div>
+                    <i {% if TdocumentSanitaire |length > 0 %} class="fa fa-check ic-3 icon_times_sanitaire" {% else %}class="fa fa-times ic-3 icon_times_sanitaire"  {% endif %}> </i>
+                </div>
+                <div  class="fileUpload" >
+                    <img class="img_upload" src="https://image.flaticon.com/icons/svg/136/136549.svg" class="icon"> 
+                    <span class="upl" id="upload">Upload document</span>   
+                    <form  onsubmit="return false" id="folder" name="tdocument" action="{{ path('new_document',{'type_document':'pass sanitaire'}) }}" method="post" enctype="multipart/form-data">
+                        <input type="file"  class="upload up up-1 upload_sanitaire" id="upfile_sanitaire" name="file"  />
+                    </form>
+                     <form  onsubmit="return false" id="tdocument_covid" name="tdocument_covid" action="{{ path('new_document',{'type_document':'certificat COVID'}) }}" method="post" enctype="multipart/form-data">
+                        <input type="file"  class="upload up up-1 upload_covid" id="file_covid" name="file"  />
+                    </form>
+                </div> 
+                {# <div class="loader_doc_sanitaire"> 
+                    <div class="loader" ></div> 
+                </div>  #}
+            </div>
+            
+            <div class="pass_sanitaire" >
+                <div class="alert alert-success success-add success_sanitaire" role="alert">
+                    <i class="fas fa-check"></i> Bien ajouté
+                </div>
+            </div> 
+            <div class="pass_sanitaire" >
+                <div class="text-danger alert-danger error-custom error_sanitaire" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+            </div> 
+            <div class="demo_sanit">
+               
+                {{ include ('tableBody/tdocument.html.twig') }} 
+                     
+            </div>    
+        </div>
+
+        {# *********************************************************************************************************** #}
+        {# ***************************************** Certificat Positif COVID **************************************** #}
+        {# style="background-color: #8c8383 !important;" #}
+        <div class="card-header div_plus mt-2 div_plus_2" >
+            <i class="fa fa-plus  navigation-icon mr-2 ml-2  active-color nvc" id="N1_1"></i> Certificat Positif COVID
+        </div>
+
+        <div class="myDiv">
+            <div class="Certificat_Positif_COVID" >
+                <div>- Certificat COVID</div>
+                <div>
+                    <i {% if TdocumentCovid |length > 0 %} class="fa fa-check ic-3 icon_times_covid" {% else %}class="fa fa-times ic-3 icon_times_covid"  {% endif %}></i>
+                </div>
+                <div  class="fileUpload" ><img class="img_upload" src="https://image.flaticon.com/icons/svg/136/136549.svg" class="icon"> 
+                    <span class="upl" id="upload">Upload document</span>
+                    <input  class="upload up up-1 upload_certificat" id="certificat" name="certificat"  />
+                    <form  onsubmit="return false" id="tdocument_covid" name="tdocument_covid" action="{{ path('new_document',{'type_document':'certificat COVID'}) }}" method="post" enctype="multipart/form-data">
+                        <input type="file"  class="upload up up-1 upload_covid" id="file_covid" name="file"  />
+                    </form>
+                </div>
+            </div>
+
+            <div class="Certificat_Positif_COVID" >
+                <div class="alert alert-success success-add success_COVID" role="alert">
+                    <i class="fas fa-check"></i> Bien ajouté
+                </div>
+            </div> 
+
+            <div class="Certificat_Positif_COVID" >
+                <div class="text-danger alert-danger error-custom error_COVID" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+            </div> 
+
+            <div class="Certificat_Positif_COVID myDivCvid">
+                
+                {{ include ('tableBody/tdocumentCovid.html.twig') }}   
+                
+            </div>    
+        </div>
+
+        {# style="background-color: #486b90 !important;" #}
+        <div class="card-header div_plus mt-2 div_plus_3" >
+            <i class="fa fa-plus  navigation-icon mr-2 ml-2  active-color nvc" id="N1_1"></i> Déclaration Présence Symptômes
+        </div>
+
+        <div class="myDiv myDivMessage">
+            {{ include ('tableBody/message.html.twig') }}     
+        </div>
+
+    </div>
+    <div class="modal-backdrop fade show" id="show_loader" hidden> <div class="loader1"></div> </div>
+ 
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}} 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+{% endblock %}
+

@@ -1,0 +1,52 @@
+
+<form  onsubmit="return false" id="form_message" name="form_message" action="{{ path('send_message') }}" method="post" enctype="multipart/form-data">
+    <div class="contenu-message">
+        {% if tmessage |length > 0 %}
+            <div class='message' >
+                <div class="div-message" >
+                    {% for message in tmessage %}
+                        <div class="box1 sb1" >
+                            <div class="div-text" >
+                                <p class="name">{{message.text}}</p> 
+                            </div>                            
+                        </div>  
+                    {% endfor %} 
+                    {% if DateRenderVous |length > 0 %}
+                        {% for Drv in DateRenderVous %}
+                            <div class="box2 sb2" >
+                                <div class="div-text" >
+                                    <p class="name">Votre Rendez-vous est : {{Drv |date('Y-m-d H:i:s')}}</p> 
+                                </div>                            
+                            </div>
+                            
+                        {% endfor %}    
+                    {% endif %}  
+                </div>
+                
+                <div class='div-rendez-vous'>
+                    <h1 class='h1-rendez-vous' > RENDEZ-VOUS </h1>
+                    <div class='zone-rendez-vous'>
+                    {% if DateRenderVous |length > 0 %}
+                        {% for Drv in DateRenderVous %}
+                            <p class='p-rendez-vous p-Date'>Votre Rendez-vous : </p>
+                            <p class='p-rendez-vous p-Date'>{{Drv |date('Y-m-d H:i:s')}} </p>
+                        {% endfor %}    
+                    {% else %}
+                        <p class='p-rendez-vous'>Attendez Votre Rendez-vous </p>
+                    {% endif %}
+                    </div>  
+                </div>         
+            </div>
+        {% endif %}
+        <div class='div-message-btn'>
+        
+            <div class="div-text-message" >
+                
+                <textarea class="textarea  _terx-message" name="_terx-message" rows="1" cols="20"  form="usrform" placeholder="Enter text here..." ></textarea>
+            </div>
+            <div class="div-button" >
+                <button type="submit" class="button">envoyer</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+<form  onsubmit="return false" id="form_DateRV" name="form_DateRV" action="{{ path('DateRendezVous',{'id':etudiant.id}) }}" method="post" enctype="multipart/form-data">
+                <div class="RV-contenu-message contenu-message">
+                    {% if tmessage |length > 0 or rendez_vous |length > 0 %}
+                        <div class='RendezVous-message message' >
+                            <div class="div-message" >
+                                {% for message in tmessage %}
+                                    <div class="RV-box2 sb2 box2" >
+                                        <div class="div-text" >
+                                            <p class="name">{{message.text}}</p> 
+                                        </div>                            
+                                    </div>  
+                                {% endfor %}   
+                                <div class=" message-rendez-vous" >
+                                {% for RV in rendez_vous %}
+                                    <div class="RV-box1 sb1 box1" >
+                                        <div class="div-text" >
+                                            <p class="name">{{RV.dateRV  |date('Y-m-d H:i:s')}}</p> 
+                                        </div> 
+                                    </div>  
+                                    <div class="arrow-left" hidden></div> 
+                                {% endfor %}              
+                                </div> 
+                                                          
+                            </div>       
+                        </div>
+                    {% endif %}
+                    <div class='div-message-btn'>
+                    
+                        <div class="div-text-message" >
+                            
+                            <input type="datetime-local" class="textarea  date-rendez-vous" name="_rendez-vous"   >
+                        </div>
+                        <div class="RV-div-button " >
+                            <button type="submit" class="button">envoyer</button>
+                        </div>
+                    </div>
+                </div>
+            </form>

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block stylesheets %}
+
+{{ parent()}}
+
+<link rel="stylesheet" href="{{asset('css/inc/sidebar.css') }}">
+
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="top-bar">
+        <div class="flex-container">
+            <div class="ml-3 mt-1 p-2  font-weight-bold"><i class="fas fa-bars"></i> UIASS-ONLINE</div>
+            {# <div class="user">Admin</div> #}
+            <div class="mr-4 mt-1 p-2" style="font-size:14px;"> <i class="fas fa-cog"></i> <i class="fas fa-level-up-alt ml-2"></i></div>
+            {# <i class="fas fa-cog"></i> #}
+        </div>
+</div>
+{# -------------------------------------- top-bar -------------------------------------------------------- #}
+
+
+<div class="row m-0">
+    <div class="col-2 p-0"> 
+
+        <div class="side-bare shadow"> 
+            <ul  style="list-style-type: none;  padding:0px;" >
+                {# <li> <div id="user"> Dashboard  </div></li> #}
+                <li>
+                    <div id="dachboard" class="active"><i class="fas fa-tachometer-alt mr-1"></i> PAGES <i class="fas fa-angle-down float-right mt-1"></i></div>
+                    <ul  class="dachboard selectedul" style="list-style-type: none;  padding: 6px 20px;">
+                    <li class="p-1"> Accueil </li>
+                    <li class="p-1"> Profile </li>
+                    <li class="p-1"> video </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>  
+    </div>
+
+   
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+{% block  javascripts %}
+
+{{ parent()}}
+ <script src="{{ asset('js/inc/sidebar.js') }}" ></script> 
+
+{% endblock %}
+
